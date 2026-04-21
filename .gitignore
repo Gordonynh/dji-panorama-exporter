@@ -5,3 +5,5 @@ output/
 exports/
 *.bak
 NativeApp/.build/
+
+dist/

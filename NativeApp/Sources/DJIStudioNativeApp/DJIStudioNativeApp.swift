@@ -1042,6 +1042,25 @@ final class ExportViewModel: ObservableObject {
     private let uiTestScenario: UITestScenario?
     private static let languageDefaultsKey = "native_app_language"
 
+    private var appLogURL: URL {
+        runtimeRoot.appending(path: "app.log")
+    }
+
+    private func appendAppLog(_ message: String) {
+        let line = "[\(ISO8601DateFormatter().string(from: Date()))] \(message)\n"
+        if let data = line.data(using: .utf8) {
+            if FileManager.default.fileExists(atPath: appLogURL.path) {
+                if let handle = try? FileHandle(forWritingTo: appLogURL) {
+                    try? handle.seekToEnd()
+                    try? handle.write(contentsOf: data)
+                    try? handle.close()
+                }
+            } else {
+                try? data.write(to: appLogURL)
+            }
+        }
+    }
+
     init() {
         self.projectRoot = ProjectLocator.locateProjectRoot()
         self.runtimeRoot = AppRuntimePaths.ensureRuntimeRoot()
@@ -1050,6 +1069,15 @@ final class ExportViewModel: ObservableObject {
         self.language = stored.flatMap(AppLanguage.init(rawValue:)) ?? .system
         self.uiTestScenario = UITestScenario.parse(arguments: ProcessInfo.processInfo.arguments)
         self.statusText = localized(.ready)
+        let initialOutputPath = self.outputDirectory?.path ?? "nil"
+        appendAppLog("init projectRoot=\(projectRoot.path) outputDirectory=\(initialOutputPath) uiTestScenario=\(uiTestScenario != nil)")
+        if uiTestScenario != nil {
+            Task { @MainActor [weak self] in
+                try? await Task.sleep(for: .milliseconds(300))
+                self?.appendAppLog("scheduled ui test scenario")
+                self?.runUITestScenarioIfNeeded()
+            }
+        }
     }
 
     func localized(_ key: LKey, _ args: Any...) -> String {
@@ -1127,6 +1155,7 @@ final class ExportViewModel: ObservableObject {
         guard !hasRunUITestScenario else { return }
         hasRunUITestScenario = true
         guard let uiTestScenario else { return }
+        appendAppLog("runUITestScenarioIfNeeded files=\(uiTestScenario.files.count) autostart=\(uiTestScenario.autostart)")
 
         if !uiTestScenario.files.isEmpty {
             addFiles(uiTestScenario.files)
@@ -1165,18 +1194,23 @@ final class ExportViewModel: ObservableObject {
         if uiTestScenario.autostart {
             Task { @MainActor in
                 try? await Task.sleep(for: .milliseconds(500))
+                self.appendAppLog("ui test autostart invoking startExport")
                 self.startExport()
             }
         }
     }
 
     func startExport() {
+        let currentOutputPath = outputDirectory?.path ?? "nil"
+        appendAppLog("startExport files=\(files.count) outputDirectory=\(currentOutputPath) projectRoot=\(projectRoot.path)")
         guard !files.isEmpty else {
             statusText = localized(.noOSVFilesSelected)
+            appendAppLog("startExport aborted: no files")
             return
         }
         guard let outputDirectory else {
             statusText = localized(.noOutputDirectorySelected)
+            appendAppLog("startExport aborted: no output directory")
             return
         }
         try? FileManager.default.createDirectory(at: outputDirectory, withIntermediateDirectories: true)
@@ -1186,6 +1220,7 @@ final class ExportViewModel: ObservableObject {
         let manifestURL = runsDirectory.appending(path: "native_app_export_manifest_\(Int(Date().timeIntervalSince1970)).json")
         let progressURL = runsDirectory.appending(path: "native_app_export_progress_\(Int(Date().timeIntervalSince1970)).json")
         let scriptURL = projectRoot.appending(path: "scripts/dji_studio_export_files.py")
+        appendAppLog("resolved scriptURL=\(scriptURL.path) exists=\(FileManager.default.fileExists(atPath: scriptURL.path))")
 
         let process = Process()
         process.executableURL = URL(fileURLWithPath: "/usr/bin/env")
@@ -1212,6 +1247,9 @@ final class ExportViewModel: ObservableObject {
         }
         process.arguments = arguments
         process.currentDirectoryURL = projectRoot
+        var env = ProcessInfo.processInfo.environment
+        env["DJI_STUDIO_PROJECT_ROOT"] = projectRoot.path
+        process.environment = env
 
         let pipe = Pipe()
         process.standardOutput = pipe
@@ -1262,6 +1300,7 @@ final class ExportViewModel: ObservableObject {
             isRunning = true
             self.process = process
             try process.run()
+            appendAppLog("spawned export backend pid=\(process.processIdentifier)")
             startProgressPolling(progressURL)
             if let seconds = uiTestScenario?.autostopAfter, seconds > 0 {
                 autoStopTask = Task { [weak self] in
@@ -1276,6 +1315,7 @@ final class ExportViewModel: ObservableObject {
             statusText = localized(.failedToLaunchExport, error.localizedDescription)
             isRunning = false
             self.process = nil
+            appendAppLog("failed to launch export backend error=\(error.localizedDescription)")
         }
     }
 
@@ -1335,21 +1375,21 @@ enum AppRuntimePaths {
 enum ProjectLocator {
     static func locateProjectRoot() -> URL {
         let env = ProcessInfo.processInfo.environment["DJI_STUDIO_PROJECT_ROOT"].map(URL.init(fileURLWithPath:))
+        let bundledProject = Bundle.main.resourceURL?.appending(path: "project", directoryHint: .isDirectory)
         let cwd = URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
         let compiledRoot = URL(fileURLWithPath: #filePath)
             .deletingLastPathComponent()
             .deletingLastPathComponent()
             .deletingLastPathComponent()
             .deletingLastPathComponent()
-        let fallback = URL(fileURLWithPath: "/Users/gordonyoung/Desktop/Projects/DJIStudio")
 
-        for candidate in [env, cwd, compiledRoot, fallback].compactMap({ $0 }) {
+        for candidate in [env, bundledProject, cwd, compiledRoot].compactMap({ $0 }) {
             let script = candidate.appending(path: "scripts/dji_studio_export_files.py")
             if FileManager.default.fileExists(atPath: script.path) {
                 return candidate
             }
         }
-        return fallback
+        return bundledProject ?? cwd
     }
 }
 

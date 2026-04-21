@@ -44,6 +44,31 @@ cd /Users/gordonyoung/Desktop/Projects/DJIStudio/NativeApp
 swift run DJIStudioNativeApp
 ```
 
+## Build Release App and DMG
+
+```bash
+cd /Users/gordonyoung/Desktop/Projects/DJIStudio-public
+./NativeApp/build_release_dmg.sh
+```
+
+Artifacts:
+
+- `dist/release/DJI Panorama Exporter.app`
+- `dist/release/DJI-Panorama-Exporter.dmg`
+
+The release app bundle includes:
+
+- the Native macOS front-end
+- bundled project scripts under `Contents/Resources/project/scripts`
+- bundled validated DJI runtime under `Contents/Resources/project/runtime_candidate`
+
+## Upload DMG to GitHub Release
+
+```bash
+cd /Users/gordonyoung/Desktop/Projects/DJIStudio-public
+./NativeApp/upload_release_dmg.sh v0.1.0
+```
+
 ## Notes
 
 - The app uses the Python workflow in:
