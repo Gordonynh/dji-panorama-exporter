@@ -1,59 +1,131 @@
-# DJI OSV Export Runtime
+# DJI Panorama Exporter
 
-Native macOS toolkit for exporting DJI `OSV` panoramic source files to high-quality equirectangular MP4 using a bundled minimal DJI runtime.
+Native macOS toolkit for converting DJI `OSV` panoramic source files into high-quality equirectangular MP4 using a bundled minimal DJI runtime.
 
-## What this repository contains
+## What It Does
 
-- `runtime_candidate/`
-  - minimal validated DJI runtime required to execute export jobs
-- `NativeApp/`
-  - SwiftUI macOS front-end for drag-and-drop export
-- `scripts/`
-  - Python automation, export orchestration, runtime validation, and regression tooling
-- `docs/`
-  - engineering notes, runtime validation status, and usage documentation
-- `bin/`
-  - convenience wrappers
-
-## What this repository does
-
-- Creates temporary DJI Studio live projects from OSV files
-- Exports 6K / 8K panoramic MP4
+- Imports DJI `OSV` files
+- Creates temporary DJI live projects automatically
+- Exports panoramic MP4 in `6K` or `8K`
 - Preserves source frame rate (`50fps` / `60fps`)
-- Supports high-quality export settings including 10-bit output
-- Runs with the bundled `runtime_candidate` instead of requiring an installed `DJI Studio.app`
+- Supports `10-bit` export
+- Supports denoise modes and bitrate presets
 - Supports hidden/background runtime launch
 - Supports cancellation of queued and running exports with cleanup
+- Includes a native SwiftUI macOS front-end and scriptable CLI workflow
+
+## Repository Layout
+
+- `NativeApp/`
+  - SwiftUI macOS app for drag-and-drop export
+- `runtime_candidate/`
+  - Minimal validated DJI runtime required to execute export jobs
+- `scripts/`
+  - Export orchestration, runtime validation, regression tests, smoke tests
+- `bin/`
+  - Convenience wrappers
+- `docs/`
+  - Validation notes, runtime status, quality notes, migration and recovery docs
+- `config/`
+  - Local path configuration
 
 ## Requirements
 
 - macOS
 - Python 3
-- Swift toolchain (only if building the NativeApp locally)
+- Swift toolchain if you want to build the native app locally
 - Existing DJI support data under:
   - `~/Library/Application Support/DJI Studio`
 
-## Quick start
+## Quick Start
 
-Health check:
+### Health Check
 
 ```bash
 ./bin/dji-healthcheck
 ```
 
-8K export:
+### Export an Entire Directory in 8K
 
 ```bash
 ./bin/dji-8k /path/to/input_dir /path/to/output_dir
 ```
 
-Native app build:
+### Export an Entire Directory in 6K
+
+```bash
+./bin/dji-6k /path/to/input_dir /path/to/output_dir
+```
+
+### Build the Native App
 
 ```bash
 cd NativeApp
 swift build
 ```
 
-## Important note
+### Run the Native App
 
-This repository bundles a minimized runtime needed to execute the export workflow. It does **not** reimplement DJI stitching logic from scratch.
+```bash
+cd NativeApp
+swift run DJIStudioNativeApp
+```
+
+## Native App Features
+
+- Drag files into the drop zone
+- Click the drop zone to choose files
+- Select `6K` / `8K`
+- Select source frame rate or force a target frame rate
+- Select bitrate mode: `low`, `medium`, `high`, `custom`
+- Enable or disable denoise
+- Choose denoise mode: `performance` / `quality`
+- Enable or disable `10-Bit`
+- Set queue parallelism for staging
+- Watch per-file progress and logs
+- Stop queued or running exports with cleanup
+- Switch UI language inside the app
+
+## CLI and Automation
+
+Main wrappers:
+
+- `./bin/dji-6k`
+- `./bin/dji-8k`
+- `./bin/dji-pipeline-6k`
+- `./bin/dji-pipeline-8k`
+- `./bin/dji-healthcheck`
+
+Useful scripts:
+
+- `scripts/dji_studio_export_files.py`
+- `scripts/dji_studio_batch_internal_export.py`
+- `scripts/dji_studio_validate_runtime_export.py`
+- `scripts/dji_studio_stop_regression.py`
+- `scripts/dji_native_app_smoke_test.py`
+
+## Runtime Status
+
+Current validated state:
+
+- `runtime_candidate` can perform real high-quality export
+- `runtime_candidate` supports hidden/background launch
+- queued and running task cancellation has been regression-tested
+- `50fps` and `60fps` source frame rates are preserved
+
+See:
+
+- `docs/RUNTIME_VALIDATION_STATUS.md`
+- `docs/QUALITY_STATUS.md`
+
+## Important Note
+
+This repository does **not** reimplement DJI panoramic stitching from scratch.
+It packages a validated minimal runtime and automation layer around DJI's private export pipeline.
+
+## Current Constraints
+
+- This workflow still depends on DJI support data stored on the local machine
+- Runtime behavior is validated on macOS only
+- The bundled runtime is minimized, but not trivial in size
+
