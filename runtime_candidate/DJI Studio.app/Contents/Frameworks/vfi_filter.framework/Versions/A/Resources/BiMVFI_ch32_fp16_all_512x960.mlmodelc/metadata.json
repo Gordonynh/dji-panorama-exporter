@@ -1,0 +1,115 @@
+[
+  {
+    "metadataOutputVersion" : "3.0",
+    "storagePrecision" : "Float16",
+    "outputSchema" : [
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 5 × 512 × 960)",
+        "shortDescription" : "",
+        "shape" : "[1, 5, 512, 960]",
+        "name" : "imgt_pred",
+        "type" : "MultiArray"
+      }
+    ],
+    "modelParameters" : [
+
+    ],
+    "specificationVersion" : 7,
+    "mlProgramOperationTypeHistogram" : {
+      "Ios16.logicalAnd" : 2,
+      "Ios16.leakyRelu" : 68,
+      "Ios16.reduceL2Norm" : 2,
+      "Ios16.reduceMax" : 2,
+      "SliceByIndex" : 74,
+      "Concat" : 62,
+      "Ios16.reduceSum" : 24,
+      "Pad" : 14,
+      "Ios16.maximum" : 1,
+      "PixelShuffle" : 48,
+      "Ios16.reshape" : 72,
+      "Ios16.mul" : 148,
+      "Ios16.resample" : 72,
+      "Ios16.upsampleBilinear" : 24,
+      "Squeeze" : 1,
+      "Ios16.less" : 1,
+      "Ios16.conv" : 388,
+      "Ios16.greater" : 2,
+      "Ios16.greaterEqual" : 2,
+      "Ios16.add" : 116,
+      "Ios16.prelu" : 140,
+      "ExpandDims" : 2,
+      "Ios16.logicalOr" : 1,
+      "Ios16.pixelUnshuffle" : 8,
+      "Ios16.fillLike" : 1,
+      "Ios16.layerNorm" : 12,
+      "Ios16.instanceNorm" : 48,
+      "Split" : 36,
+      "Ios16.sub" : 10,
+      "Transpose" : 140,
+      "Ios16.reduceMean" : 2,
+      "Select" : 4,
+      "Ios16.clip" : 2,
+      "Ios16.softmax" : 24,
+      "Tile" : 2
+    },
+    "computePrecision" : "Mixed (Float16, Float32, Int32, UInt32)",
+    "isUpdatable" : "0",
+    "stateSchema" : [
+
+    ],
+    "availability" : {
+      "macOS" : "13.0",
+      "tvOS" : "16.0",
+      "visionOS" : "1.0",
+      "watchOS" : "9.0",
+      "iOS" : "16.0",
+      "macCatalyst" : "16.0"
+    },
+    "modelType" : {
+      "name" : "MLModelType_mlProgram"
+    },
+    "userDefinedMetadata" : {
+      "com.github.apple.coremltools.conversion_date" : "2026-02-26",
+      "com.github.apple.coremltools.source" : "torch==2.9.1",
+      "com.github.apple.coremltools.version" : "9.0",
+      "com.github.apple.coremltools.source_dialect" : "TorchScript"
+    },
+    "inputSchema" : [
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 3 × 512 × 960)",
+        "shortDescription" : "",
+        "shape" : "[1, 3, 512, 960]",
+        "name" : "img0",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 3 × 512 × 960)",
+        "shortDescription" : "",
+        "shape" : "[1, 3, 512, 960]",
+        "name" : "img1",
+        "type" : "MultiArray"
+      },
+      {
+        "hasShapeFlexibility" : "0",
+        "isOptional" : "0",
+        "dataType" : "Float16",
+        "formattedType" : "MultiArray (Float16 1 × 1 × 1 × 1)",
+        "shortDescription" : "",
+        "shape" : "[1, 1, 1, 1]",
+        "name" : "time_step",
+        "type" : "MultiArray"
+      }
+    ],
+    "generatedClassName" : "BiMVFI_ch32_fp16_all_512x960",
+    "method" : "predict"
+  }
+]

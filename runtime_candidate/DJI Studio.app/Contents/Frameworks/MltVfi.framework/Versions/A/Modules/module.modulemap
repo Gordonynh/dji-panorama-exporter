@@ -1,0 +1,6 @@
+framework module MltVfi {
+  umbrella header "MltVfi.h"
+  export *
+
+  module * { export * }
+}

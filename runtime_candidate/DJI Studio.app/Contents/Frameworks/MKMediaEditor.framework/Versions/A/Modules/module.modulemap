@@ -1,0 +1,6 @@
+framework module MKMediaEditor {
+  umbrella header "MKMediaEditor.h"
+  export *
+
+  module * { export * }
+}

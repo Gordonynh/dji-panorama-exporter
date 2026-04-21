@@ -1,0 +1,6 @@
+framework module MltTonalEnhance {
+  umbrella header "MltTonalEnhance.h"
+  export *
+
+  module * { export * }
+}

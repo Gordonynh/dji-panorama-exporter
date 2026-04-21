@@ -1,0 +1,24 @@
+{
+    "mask_list": [
+        {
+            "mask_name": "mask91_8",
+            "mask_00": "101_mask_fisheye_91_8_l.png",
+            "mask_01": "101_mask_fisheye_91_8_r.png"
+        },
+        {
+            "mask_name": "mask91_4",
+            "mask_00": "101_mask_fisheye_91_4_l.png",
+            "mask_01": "101_mask_fisheye_91_4_r.png"
+        },
+        {
+            "mask_name": "mask92_2",
+            "mask_00": "101_mask_fisheye_92_2_l.png",
+            "mask_01": "101_mask_fisheye_92_2_r.png"
+        },
+        {
+            "mask_name": "mask92_5",
+            "mask_00": "101_mask_fisheye_92_5_l.png",
+            "mask_01": "101_mask_fisheye_92_5_r.png"
+        }
+    ]
+}

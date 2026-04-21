@@ -1,0 +1,156 @@
+{
+  "generated_at": "2026-04-16 02:00:16 +0800",
+  "root": "/Users/gordonyoung/Offline-Document/deliverables/dji_studio_toolkit_bundle",
+  "files": [
+    {
+      "path": "CHANGELOG.md",
+      "size": 478,
+      "sha256": "78cbb4697c0238ee1246cb6eed5eae350cda4e2841cb59d66d49ae3359694832"
+    },
+    {
+      "path": "MANIFEST.json",
+      "size": 4748,
+      "sha256": "3d9be8a8d43a2edad3df4a361ba3f6bc701d9de6c094c7ac205941f359848bdc"
+    },
+    {
+      "path": "README.md",
+      "size": 825,
+      "sha256": "c1396978e1b9be94c992f1867dd6c3bec1ebd9ab0c1b5ad60b2a523c9a694850"
+    },
+    {
+      "path": "RELEASE_NOTES.md",
+      "size": 1690,
+      "sha256": "16163831060255af974e8a69ef9d9217037f1beac688d846a996548e332d4f97"
+    },
+    {
+      "path": "VERSION.json",
+      "size": 781,
+      "sha256": "50bb157a2346b3eb64f1086f3ce8cdcd14913bd94c29c9d9892d0328f7ad9d5b"
+    },
+    {
+      "path": "bin/dji-6k",
+      "size": 114,
+      "sha256": "479b1205eae3cf9f428d7ac838e40daa4d6312c9245f8dba93b2595750f5ee78"
+    },
+    {
+      "path": "bin/dji-8k",
+      "size": 114,
+      "sha256": "ac50d393abdbfa6c129fbfe2a2f291a3409dcffcb94948f63dc521b481b158cb"
+    },
+    {
+      "path": "bin/dji-export",
+      "size": 102,
+      "sha256": "92ed7b295fc6b03f5ad1d9e8113a64fc7359d189bd720cb8f9d5778dd6ade71c"
+    },
+    {
+      "path": "bin/dji-healthcheck",
+      "size": 107,
+      "sha256": "979d76dce514fdc2e8503cb730c49cd48c36c7db4dee27c53230a494311ae698"
+    },
+    {
+      "path": "bin/dji-map",
+      "size": 107,
+      "sha256": "da17612f58bb2cb353f934955c11d8acd7ec9a32f53b78d55526a73b83ed6cfd"
+    },
+    {
+      "path": "bin/dji-pipeline",
+      "size": 104,
+      "sha256": "41b4e58b1f8ab71e6b457e553483a50b093ad9194a2dd577bb877a7c9823d5d5"
+    },
+    {
+      "path": "bin/dji-pipeline-6k",
+      "size": 116,
+      "sha256": "ed0e50a3b9fa2bdfc5f2f728e5b7e62a3be61f8e22fb943229d1e5657fa1481f"
+    },
+    {
+      "path": "bin/dji-pipeline-8k",
+      "size": 116,
+      "sha256": "7b20906450d5011ae39a9dbe26e78afad287c7837764ae08c6fd36e5f0125fbe"
+    },
+    {
+      "path": "bin/dji-report",
+      "size": 110,
+      "sha256": "4bbe0469d15e90cf62cae6bec39534fe569500ee432a563d824aa862399b0780"
+    },
+    {
+      "path": "docs/FINAL_DJI_STUDIO_DELIVERY.md",
+      "size": 5001,
+      "sha256": "a72a4b6ae5e1627f9421d7a498deea67a4c73eb7d7bbae1763796c0c10972d1c"
+    },
+    {
+      "path": "docs/README_DJI_STUDIO_EXPORT.md",
+      "size": 9011,
+      "sha256": "44a4fdeb63347f076b1da1a7dca14a721884f917deb7f4c65118c437c3fa1e7f"
+    },
+    {
+      "path": "docs/README_DJI_STUDIO_MIGRATION.md",
+      "size": 3279,
+      "sha256": "cac69621cb7d5e87cb978264674e7514e6eb41f71a34882137fcc61478cdcd1a"
+    },
+    {
+      "path": "docs/README_DJI_STUDIO_RECOVERY.md",
+      "size": 4186,
+      "sha256": "cec3c161b9fb5478310e93212da4bf865a8478b77e4b2389bca9ebeac1a08379"
+    },
+    {
+      "path": "install.sh",
+      "size": 376,
+      "sha256": "72a444e17032fb06a7ebb342458b40c058b9ae623635978180d0659271fbc1dc"
+    },
+    {
+      "path": "scripts/dji_studio_batch_internal_export.py",
+      "size": 5005,
+      "sha256": "6ded3ffebb517509dce5e650ad0108f9cce4d99cf081e0e1e9addf0dd3b33c1d"
+    },
+    {
+      "path": "scripts/dji_studio_clone_import_project.py",
+      "size": 8855,
+      "sha256": "83928b00ef1ae3c167dfdf603058d6ddc428c3834b600f3761fa03fb4d04e188"
+    },
+    {
+      "path": "scripts/dji_studio_export.py",
+      "size": 1542,
+      "sha256": "b0faebdf0f8788707ea464ddeb169191ce3b8352be605ddc72879aa1aff3647a"
+    },
+    {
+      "path": "scripts/dji_studio_export_source_dir.py",
+      "size": 6719,
+      "sha256": "e73c860eacd3e0a19be14205f66b0286ecdf9fcf4316e2ed051924069ecef19d"
+    },
+    {
+      "path": "scripts/dji_studio_healthcheck.py",
+      "size": 5630,
+      "sha256": "4c11cfbad629ee66494b6e7b75ae694f301b7886246b58a2ce37b0b8a22c468c"
+    },
+    {
+      "path": "scripts/dji_studio_inject_compose_task.py",
+      "size": 10430,
+      "sha256": "ae1e7330ed36382f76ce863949634aa52614f56a2fe0e619e25a12c37ccafeca"
+    },
+    {
+      "path": "scripts/dji_studio_install_live_project.py",
+      "size": 4489,
+      "sha256": "03d8f5054ac79a73974f8dd37afb83ec1e2f39dc91e4eb95d4f6e66ad5ebcac3"
+    },
+    {
+      "path": "scripts/dji_studio_map_exports.py",
+      "size": 3606,
+      "sha256": "f41d3adc6339b28b978ded36638f4324179254175dc5914bcc9202a6ecf83f6f"
+    },
+    {
+      "path": "scripts/dji_studio_pipeline.py",
+      "size": 3402,
+      "sha256": "3fa08617999390e76c174b51172b5ce33864f672c39a92919140eca93b175908"
+    },
+    {
+      "path": "scripts/dji_studio_report_exports.py",
+      "size": 2643,
+      "sha256": "b6bf86a09a51b8334f2913cab301e7b7241460ca49ac733f8142bbe82500eee4"
+    },
+    {
+      "path": "scripts/dji_studio_trigger_internal_autocompose.py",
+      "size": 5090,
+      "sha256": "50e3ae90ec5fea75043faf45f1a5f0ce42922a7097c7885f9e2dad83071d30ca"
+    }
+  ]
+}

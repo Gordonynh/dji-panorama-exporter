@@ -1,0 +1,23 @@
+{
+  "toolkit_name": "dji_studio_toolkit_bundle",
+  "version": "v1.0.0",
+  "generated_at": "2026-04-16 01:58:47 +0800",
+  "validated_on": {
+    "platform": "macOS-26.4-arm64-arm-64bit-Mach-O",
+    "python": "3.14.3"
+  },
+  "validation_summary": {
+    "healthcheck_attach_ok": true,
+    "healthcheck_symbols_ok": true,
+    "export_count": 36,
+    "mapping_ok_count": 36,
+    "expected_mapping_count": 36
+  },
+  "key_outputs": {
+    "healthcheck": "exports/dji_studio_live/healthcheck.json",
+    "report_json": "exports/dji_studio_live/final_8k_full_report.json",
+    "report_csv": "exports/dji_studio_live/final_8k_full_report.csv",
+    "mapping_json": "exports/dji_studio_live/final_8k_full_mapping.json",
+    "mapping_csv": "exports/dji_studio_live/final_8k_full_mapping.csv"
+  }
+}

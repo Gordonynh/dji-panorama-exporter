@@ -1,0 +1,191 @@
+{
+	"plt_perception":	{
+		"version":	"0.1.0.0",
+		"files":	[],
+		"streams":	[{
+				"id":	1000,
+				"name":	"yuv_image",
+				"meta":	"viewer.image.image_info",
+				"flag":	1
+			}, {
+				"id":	1001,
+				"name":	"gray_image",
+				"meta":	"viewer.image.image_info",
+				"flag":	1
+			}, 
+			 {
+				"id":	1009,
+				"name":	"mul_gray_image",
+				"meta":	"viewer.image.image_info",
+				"flag":	1
+			},{
+          "id":	1010,
+          "name":	"mul_gray_image",
+          "meta":	"viewer.image.image_info",
+          "flag":	1
+        }, {
+				"id":	4,
+				"name":	"tk1",
+				"meta":	"viewer.image_shape.rectangle",
+				"flag":	1
+			}, {
+				"id":	5,
+				"name":	"vot_det",
+				"meta":	"viewer.image_shape.rectangle",
+				"flag":	1
+			}, {
+				"id":	6,
+				"name":	"ml_fusion",
+				"meta":	"viewer.image_shape.rectangle",
+				"flag":	1
+			}, {
+				"id":	8,
+				"name":	"loading",
+				"meta":	"viewer.load_curve.curve",
+				"flag":	1
+			}, {
+				"id":	9,
+				"name":	"dynamic_roi",
+				"meta":	"viewer.image_shape.rectangle",
+				"flag":	1
+			}, {
+				"id":	10,
+				"name":	"gesture_det",
+				"meta":	"viewer.image_shape.rectangle",
+				"flag":	1
+			}, {
+				"id":	11,
+				"name":	"vot_fusion",
+				"meta":	"viewer.image_shape.rectangle",
+				"flag":	1
+			}, {
+				"id":	12,
+				"name":	"itm_input",
+				"meta":	"viewer.image_shape.rectangle",
+				"flag":	1
+			}, {
+				"id":	13,
+				"name":	"ml_fusion_face",
+				"meta":	"viewer.image_shape.rectangle",
+				"flag":	1
+			}, {
+				"id":	14,
+				"name":	"ml_fusion_head",
+				"meta":	"viewer.image_shape.rectangle",
+				"flag":	1
+			}, {
+				"id":	15,
+				"name":	"ml_fusion_body",
+				"meta":	"viewer.image_shape.rectangle",
+				"flag":	1
+			}, {
+				"id":	16,
+				"name":	"ml_reid_roi",
+				"meta":	"viewer.image_shape.rectangle",
+				"flag":	1
+			}, {
+				"id":	17,
+				"name":	"spot_check_teach_roi",
+				"meta":	"viewer.image_shape.rectangle",
+				"flag":	1
+			}, {
+				"id":	18,
+				"name":	"spot_check_replay_out",
+				"meta":	"viewer.image_shape.rectangle",
+				"flag":	1
+			}, {
+				"id":	19,
+				"name":	"spot_check_replay_roi",
+				"meta":	"viewer.image_shape.rectangle",
+				"flag":	1
+			},{
+				"id":	20,
+				"name":	"vis_box",
+				"meta":	"viewer.image_shape.rectangle",
+				"flag":	1
+			}, {
+				"id":	1003,
+				"name":	"image_pose",
+				"meta":	"viewer.image_pose.point",
+				"flag":	1
+			},{
+				"id":	1004,
+				"name":	"image_match",
+				"meta":	"viewer.image_match.points",
+				"flag":	1
+			},{
+				"id":	1005,
+				"name":	"parsing",
+				"meta":	"viewer.image.image_info",
+				"flag":	1
+			},{
+				"id":	1006,
+				"name":	"image_pose3d",
+				"meta":	"viewer.image_pose3d.point",
+				"flag":	1
+			},{
+				"id":	1012,
+				"name":	"packed_keypoints",
+				"meta":	"viewer.packed_keypoints.point",
+				"flag":	1
+			},
+			{
+				"id":	23,
+				"name":	"fcm_mul_frame_box",
+				"meta":	"viewer.image_shape.rectangle",
+				"flag":	1
+			},
+     		{
+				"id":	24,
+				"name":	"omni_det_box",
+				"meta":	"viewer.image_shape.rectangle",
+				"flag":	1
+			},
+      		{
+				"id":	25,
+				"name":	"omni_mot_box",
+				"meta":	"viewer.image_shape.rectangle",
+				"flag":	1
+			}
+			,
+			{
+				"id":	26,
+				"name":	"infrared_fusion_box",
+				"meta":	"viewer.image_shape.rectangle",
+				"flag":	1
+			},
+			{
+				"id":	27,
+				"name":	"sod_box",
+				"meta":	"viewer.image_shape.rectangle",
+				"flag":	1
+			}],
+			"meta":	{
+				"viewer":	{
+					"image":	{
+						"image_info":	{
+							"width":	0,
+							"height":	0,
+							"format":	"image_jpeg"
+						}
+					},
+					"image_shape":	{
+						"rectangle":	{
+					}
+					},
+					"load_curve":	{
+						"curve":	{
+					}
+					},
+					"image_pose":	{
+						"point":	{
+					}
+					},
+					"image_match":	{
+						"points":	{
+					}
+					}
+				}
+			}
+		}
+	}

@@ -1,0 +1,6 @@
+framework module ToneEnhancement {
+  umbrella header "ToneEnhancement.h"
+  export *
+
+  module * { export * }
+}
