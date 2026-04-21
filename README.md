@@ -1,5 +1,7 @@
 # DJI Panorama Exporter
 
+[English](README.md) | [中文](README.zh-CN.md)
+
 Native macOS toolkit for converting DJI `OSV` panoramic source files into high-quality equirectangular MP4 using a bundled minimal DJI runtime.
 
 ## What It Does
@@ -128,4 +130,3 @@ It packages a validated minimal runtime and automation layer around DJI's privat
 - This workflow still depends on DJI support data stored on the local machine
 - Runtime behavior is validated on macOS only
 - The bundled runtime is minimized, but not trivial in size
-
